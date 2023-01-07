@@ -10,8 +10,6 @@ class Solution:
                 ans.append(st)
                 return 
             for k in dic[digits[i]]:
-                st = st + k
-                dfs(i+1,st)
-                st = st[:-1]
+                dfs(i+1,st+k)
         dfs(0,"")
         return ans
