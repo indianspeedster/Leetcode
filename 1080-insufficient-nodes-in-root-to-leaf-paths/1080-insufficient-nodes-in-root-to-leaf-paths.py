@@ -7,17 +7,15 @@
 class Solution:
     def sufficientSubset(self, root: TreeNode, limit: int) -> TreeNode:
 
-        def dfs(node: TreeNode, n: int) -> bool:                    
+        def dfs(node,n):
             n += node.val
-            if not node.left and not node.right: return n >= limit 
-            
-            l = dfs(node.left , n) if node.left  else False         
-            r = dfs(node.right, n) if node.right else False         #
-            
-            if not l: node.left  = None                             
-            if not r: node.right = None                            
-
-            return l or r                                          
-
-        return root if dfs(root, 0) else None                       
+            if not node.left and not node.right:
+                return n>=limit
+           
+            left = dfs(node.left,n) if node.left else False
+            right = dfs(node.right,n) if node.right else False
+            if not left : node.left = None
+            if not right: node.right = None
+            return left or right
         
+        return root if dfs(root,0) else None
