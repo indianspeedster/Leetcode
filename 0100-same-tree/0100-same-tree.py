@@ -9,11 +9,7 @@ class Solution:
         def dfs(m,n):
             if not m and not n:
                 return True
-            if not m :
-                return False
-            if not n:
-                return False
-            if m.val!=n.val:
+            if not m or not n or m.val!=n.val :
                 return False
             return dfs(m.left,n.left) and dfs(m.right,n.right)
         return dfs(p,q)
