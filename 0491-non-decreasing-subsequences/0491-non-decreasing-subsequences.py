@@ -1,20 +1,17 @@
 class Solution:
     def findSubsequences(self, nums: List[int]) -> List[List[int]]:
         res = set()
-
-        def BT(i,subsequence):
-            nonlocal res
-            if len(subsequence)>1:
-                res.add(tuple(subsequence))
-            if i==len(nums):
+        def dfs(i,sub):
+            if len(sub)>1:
+                res.add(tuple(sub))
+            if i >= len(nums):
                 return
-            
-            if not subsequence or nums[i] >= subsequence[-1]:
-                BT(i+1, subsequence+[nums[i]]) 
-            BT(i+1, subsequence)
-        
-        BT(0,[])
+            if not sub or nums[i]>=sub[-1]:
+                dfs(i+1,sub+[nums[i]])
+            dfs(i+1,sub)
+            return
+        dfs(0,[])
         return res
             
-            
+
         
