@@ -3,7 +3,7 @@ class Solution:
         low, high = 0, len(nums)-1
         ans = float("inf")
         while low<=high:
-            mid = (low+high)//2
+            mid = (low+high)>>1
             if nums[low]> nums[mid]:
                 ans = min(nums[mid], ans)
                 high = mid - 1
