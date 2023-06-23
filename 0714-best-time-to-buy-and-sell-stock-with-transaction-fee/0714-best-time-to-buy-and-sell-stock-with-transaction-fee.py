@@ -1,11 +1,16 @@
 class Solution:
     def maxProfit(self, prices: List[int], fee: int) -> int:
         n = len(prices)
-        hold, free = [0] * n, [0] * n
-        hold[0] = -prices[0]
-        
-        for i in range(1, n):
-            hold[i] = max(hold[i - 1], free[i - 1] - prices[i])
-            free[i] = max(free[i - 1], hold[i - 1] + prices[i] - fee)
-        
-        return free[-1]
+        dp = [[-1]*2 for i in range(n)]
+        def dfs(i, buy):
+            if i == n:
+                return 0
+            if dp[i][buy] != -1:
+                return dp[i][buy]
+            if buy:
+                profit = max((-prices[i] + dfs(i+1, 0)), dfs(i+1, 1))
+            else:
+                profit = max((prices[i]- fee + dfs(i+1,1)), dfs(i+1,0))
+            dp[i][buy] = profit
+            return dp[i][buy]
+        return dfs(0, 1)
