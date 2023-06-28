@@ -13,8 +13,7 @@ class Solution:
             cur_node = queue.popleft()
             for nxt_node, path_prob in graph[cur_node]:
 
-                # Only update max_prob[nxt_node] if the current path increases
-                # the probability of reach nxt_node.
+
                 if max_prob[cur_node] * path_prob > max_prob[nxt_node]:
                     max_prob[nxt_node] = max_prob[cur_node] * path_prob
                     queue.append(nxt_node)
