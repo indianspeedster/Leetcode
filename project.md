@@ -1,10 +1,10 @@
 # Project Proposal (Initial)
 
-**Title:** Machine Learning Deployment Platform on Chameleon
+## **Title:** Machine Learning Deployment Platform on Chameleon
 
-**Name:** Chandra Shekhar Pandey
+<center> <b>Name: </b>: Chandra Shekhar Pandey </center>
 
-**Net ID:** cp3793
+<center> <b>Net ID:</b> cp3793 </center>
 
 **N Number:** N16321363
 
