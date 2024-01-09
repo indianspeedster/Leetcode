@@ -1,14 +1,20 @@
 # Project Proposal (Initial)
 
-## **Title:** Machine Learning Deployment Platform on Chameleon
+**Title:** Machine Learning Deployment Platform on Chameleon
 
-<center> <b>Name: </b>: Chandra Shekhar Pandey </center>
+---
 
-<center> <b>Net ID:</b> cp3793 </center>
+**Name:** Shekhar
+
+**Net ID:** cp3793
 
 **N Number:** N16321363
 
+---
+
 **Objective:** In today's data-driven world, organizations require advanced AI and machine learning capabilities to gain a competitive edge. Public cloud providers, like Amazon Web Services (AWS), offer robust solutions such as Amazon SageMaker, making it easier to deploy machine learning models. However, these services are not available on Chameleon. This project aims to create a machine-learning deployment platform on Chameleon Cloud which offers some of the services provided by AWS SageMaker.
+
+---
 
 ### Different services to be worked upon and the time needed to implement them:
 
