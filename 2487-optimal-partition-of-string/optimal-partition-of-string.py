@@ -7,9 +7,8 @@ class Solution:
             if sub in cur:
                 cur = set()
                 ans += 1
-                cur.add(sub)
-            else:
-                cur.add(sub)
+
+            cur.add(sub)
         return ans
 
         
