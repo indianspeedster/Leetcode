@@ -1,21 +1,18 @@
 class Solution:
-    def findWinners(self, matches: List[List[int]]) -> List[List[int]]:
-        team_dict = {}
-        for winner, loser in matches:
-            if winner not in team_dict:
-                team_dict[winner] = [0,0]
-            if loser not in team_dict:
-                team_dict[loser] = [0,0]
-            team_dict[winner][1] += 1
-            team_dict[loser][0] += 1
-        ans = [[],[]]
-        
-      
-        for key,value in team_dict.items():
-            if value[0] == 0:
-                ans[0].append(key)
-            if value[0] == 1:
-                ans[1].append(key)
+    def findWinners(self, matches):
+        losses = [0] * 100001
 
-        return [sorted(i) for i in ans]
+        for winner, loser in matches:
+            if losses[winner] == 0:
+                losses[winner] = -1
+
+            if losses[loser] == -1:
+                losses[loser] = 1
+            else:
+                losses[loser] += 1
+
+        zero_loss = [i for i in range(1, 100001) if losses[i] == -1]
+        one_loss = [i for i in range(1, 100001) if losses[i] == 1]
+
+        return [zero_loss, one_loss]
         
