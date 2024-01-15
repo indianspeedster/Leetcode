@@ -1,21 +1,24 @@
 class Solution:
     def findWinners(self, matches: List[List[int]]) -> List[List[int]]:
-        team_dict = {}
-        for winner, loser in matches:
-            if winner not in team_dict:
-                team_dict[winner] = [0,0]
-            if loser not in team_dict:
-                team_dict[loser] = [0,0]
-            team_dict[winner][1] += 1
-            team_dict[loser][0] += 1
-        ans = [[],[]]
+        zero_loss = set()
+        one_loss = set()
+        more_losses = set()
         
-      
-        for key,value in team_dict.items():
-            if value[0] == 0:
-                ans[0].append(key)
-            if value[0] == 1:
-                ans[1].append(key)
-
-        return [sorted(i) for i in ans]
+        for winner, loser in matches:
+            # Add winner
+            if (winner not in one_loss) and (winner not in more_losses):
+                zero_loss.add(winner)
+            # Add or move loser.
+            if loser in zero_loss:
+                zero_loss.remove(loser)
+                one_loss.add(loser)
+            elif loser in one_loss:
+                one_loss.remove(loser)
+                more_losses.add(loser)
+            elif loser in more_losses:
+                continue
+            else:
+                one_loss.add(loser)          
+            
+        return [sorted(list(zero_loss)), sorted(list(one_loss))]
         
