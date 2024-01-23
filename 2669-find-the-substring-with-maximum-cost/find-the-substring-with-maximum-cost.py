@@ -6,7 +6,7 @@ class Solution:
 
         maxi, cur  = 0, 0
 
-        for ind, st in enumerate(s):
+        for st in s:
             cur += dic[st]
             if cur < 0:
                 cur = 0
