@@ -1,6 +1,6 @@
 class Solution:
     def maxLength(self, arr: List[str]) -> int:
-        @cache
+        
         def dfs(n,k):
             if n == len(arr):
                 return 0
