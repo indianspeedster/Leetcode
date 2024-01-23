@@ -1,12 +1,11 @@
 class Solution:
     def maxLength(self, arr: List[str]) -> int:
-        
         def dfs(n,k):
             if n == len(arr):
                 return 0
             accept = True
             l = set()
-            for ind, char in enumerate(arr[n]):
+            for char in arr[n]:
                 if char in k or char in l:
                     accept =False
                     break
