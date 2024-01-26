@@ -1,6 +1,6 @@
 class Solution:
     def findPaths(self, m: int, n: int, maxMove: int, startRow: int, startColumn: int) -> int:
-        dp = defaultdict(int)
+        dp = {}
         def dfs(i,j,step):
 
             if step < 0:
