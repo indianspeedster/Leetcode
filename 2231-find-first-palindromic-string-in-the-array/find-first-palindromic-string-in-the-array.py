@@ -1,7 +1,14 @@
 class Solution:
     def firstPalindrome(self, words: List[str]) -> str:
         for word in words:
-            if word == word[::-1]:
+            i,j = 0, len(word)-1
+            while i<j:
+                if word[i]==word[j]:
+                    i +=1
+                    j -= 1
+                else:
+                    break
+            if i >= j:
                 return word
         return ""
         
