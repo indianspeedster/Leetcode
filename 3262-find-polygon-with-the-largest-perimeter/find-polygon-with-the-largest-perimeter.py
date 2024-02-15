@@ -1,9 +1,9 @@
 class Solution:
     def largestPerimeter(self, nums: List[int]) -> int:
         nums.sort()
-        perimeter = nums[0] + nums[1]
+        perimeter = 0
         ans = -1
-        for i, num in enumerate(nums[2:]):
+        for num in nums:
             if perimeter > num :
                 ans = perimeter + num
             perimeter += num
