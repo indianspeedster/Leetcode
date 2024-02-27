@@ -1,7 +1,7 @@
 class SmallestInfiniteSet:
 
     def __init__(self):
-        self.arr = [i for i in range(1,10000)]
+        self.arr = [i for i in range(1,1001)]
         self.set1 = set(self.arr)
         
 
