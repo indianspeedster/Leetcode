@@ -1,12 +1,17 @@
 class Solution:
     def maxOperations(self, nums: List[int], k: int) -> int:
+        nums.sort()
         ans = 0
-        hash_map = defaultdict(int)
-        for num in nums:
-            if hash_map[k-num] > 0:
-                hash_map[k-num] -= 1
+        left,right = 0, len(nums)-1
+        while left < right:
+            num = nums[left] + nums[right]
+            if num == k:
                 ans += 1
+                left += 1
+                right -= 1
+            elif num < k:
+                left += 1
             else:
-                hash_map[num] += 1
+                right -= 1
         return ans
         
