@@ -1,20 +1,16 @@
 class Solution:
     def removeZeroSumSublists(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        front = ListNode(0, head)
-        start = front
+        dummyNode = ListNode(0)
+        dummyNode.next = head
+        start = dummyNode
 
-        while start is not None:
-            prefix_sum = 0
+        while start:
             end = start.next
-
-            while end is not None:
-               
-                prefix_sum += end.val
-                
-                if prefix_sum == 0:
+            prefixSum = 0
+            while end:
+                prefixSum += end.val
+                if prefixSum == 0:
                     start.next = end.next
                 end = end.next
-
             start = start.next
-
-        return front.next
+        return dummyNode.next
