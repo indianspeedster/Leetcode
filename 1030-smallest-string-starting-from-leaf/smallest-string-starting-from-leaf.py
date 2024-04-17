@@ -11,17 +11,12 @@ class Solution:
             if not node:
                 return
             if not node.left and not node.right:
-                an = st + chr(97+node.val)
-                self.strdict.add(an[::-1])
-            dfs(node.left, st + chr(97+node.val))
-            dfs(node.right, st + chr(97+node.val))
+                self.strdict.add(chr(97+node.val)+st)
+            dfs(node.left, chr(97+node.val)+st)
+            dfs(node.right, chr(97+node.val)+st)
         dfs(root, "")
         self.strdict = list(self.strdict)
         self.strdict.sort()
-        print(self.strdict)
-        for string in self.strdict:
-            if len(string) > 1:
-                return string
         return self.strdict[0]
         
 
