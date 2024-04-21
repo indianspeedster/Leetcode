@@ -5,7 +5,7 @@ class Solution:
             adjdict[start].add(end)
             adjdict[end].add(start)
         self.vis = set()
-        @cache
+       
         def dfs(node):
             if node in self.vis:
                 return False
