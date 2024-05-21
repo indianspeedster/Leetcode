@@ -3,7 +3,6 @@ class Solution:
         self.ans = []
         def dfs(i, arr):
             if i == len(nums):
-               
                 self.ans.append(arr)
                 return
             dfs(i+1, arr + [nums[i]])
