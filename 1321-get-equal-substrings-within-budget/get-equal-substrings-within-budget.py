@@ -5,7 +5,6 @@ class Solution:
         start = 0
         curr = 0
         cost = maxCost
-        print(arr)
         while curr in range(len(arr)) :
             while curr in range(len(arr)) and arr[curr] > maxCost:
                 curr += 1
@@ -15,7 +14,6 @@ class Solution:
                 cost -= arr[curr]
                 if cost >= 0:
                     ans = max(curr-start+1, ans)
-                    
                 else:
                     while cost < 0 and start < curr:
                         cost += arr[start]
