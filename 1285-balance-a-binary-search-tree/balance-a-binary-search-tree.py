@@ -10,11 +10,12 @@ class Solution:
         def dfs(node):
             if not node:
                 return
-            self.nodeVals.append(node.val)
+            
             dfs(node.left)
+            self.nodeVals.append(node.val)
             dfs(node.right)
         dfs(root)
-        self.nodeVals.sort()
+        
         def build(vals):
             if not vals:
                 return None
