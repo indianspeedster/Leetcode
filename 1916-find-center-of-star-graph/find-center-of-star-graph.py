@@ -1,12 +1,5 @@
 class Solution:
     def findCenter(self, edges: List[List[int]]) -> int:
-        edgemap = defaultdict(int)
-        for u,v in edges:
-            edgemap[u] += 1
-            edgemap[v] += 1
-        n = len(edgemap.keys()) 
+        first_edge, second_edge = edges[0], edges[1]
 
-        for edge, connection in edgemap.items():
-            if connection == n-1:
-                return edge
-        
+        return first_edge[0] if first_edge[0] in second_edge else first_edge[1]
