@@ -5,7 +5,7 @@ class Solution:
             dic[start] += 1
             dic[end] += 1
         val1 = n
-        dic2 = defaultdict(int)
+        dic2 = {}
         for key, val in sorted(dic.items(), key = lambda x : x[1], reverse=True):
             dic2[key] = val1
             val1 -= 1
