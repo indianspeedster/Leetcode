@@ -1,6 +1,6 @@
 class Solution:
     def averageWaitingTime(self, customers: List[List[int]]) -> float:
-        curr = customers[0][0]
+        curr = 0
         waitTime = 0
         for start, end in customers:
             if start > curr:
