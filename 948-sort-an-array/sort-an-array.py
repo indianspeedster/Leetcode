@@ -12,7 +12,7 @@ class Solution:
             ans = []
             i, j = 0, 0
             while i < len(l1) and j < len(l2):
-                if l1[i] > l2[j]:
+                if l1[i] < l2[j]:
                     ans.append(l1[i])
                     i += 1
                 else:
@@ -26,6 +26,6 @@ class Solution:
                 ans.append(l2[j])
                 j += 1
             return ans
-        return mergeSort(nums)[::-1]
+        return mergeSort(nums)
             
         
