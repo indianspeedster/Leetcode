@@ -1,18 +1,11 @@
 int countSeniors(char ** details, int detailsSize){
-    int count = 0;
-    int i = 0;
-    for (; i < detailsSize; i++){
-        char * detail = strdup(details[i]);
-        char result[3];
-        result[0] = detail[11];
-        result[1] = detail[12];
-        result[2] = '\0';
-        printf("%s", result);
-        int age = atoi(result);
-        if (age > 60){
+    int count =0;
+    for(int i=0;i<detailsSize;i++)
+    {
+        if((details[i][11]=='6' && details[i][12]>'0') || (details[i][11]>'6'))
+        {
             count++;
         }
-        free(detail);
     }
-return count;
+    return count;
 }
