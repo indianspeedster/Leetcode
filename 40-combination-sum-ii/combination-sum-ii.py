@@ -2,23 +2,19 @@ class Solution:
     def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
         res = []
         candidates.sort()
-        def backtrack(ind, target, arr):
-            if target == 0:
-                res.append(arr.copy())
+        def dfs(n, curr, su):
+            if su == target:
+                res.append(curr.copy())
                 return
-            if ind >= len(candidates):
+            if n >= len(candidates) or su > target:
                 return
-            if target<0:
-                return
-            prev = -1
-            for i in range(ind, len(candidates)):
-                if candidates[i] == prev: 
-                    continue
-                backtrack(i+1, target - candidates[i], arr+[candidates[i]])
-                prev = candidates[i]
-        backtrack(0,target,[])
+            dfs(n+1, curr + [candidates[n]], su + candidates[n])
+            while n+1 in range(len(candidates)) and candidates[n] == candidates[n+1]:
+                n += 1
+            dfs(n+1, curr, su)
+            return
+        dfs(0, [], 0)
         return res
-                
         
 
             
