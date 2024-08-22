@@ -12,9 +12,16 @@ class Solution:
                     return False
                 handd[i] -= 1
                 if handd[i] == 0:
-                    if i !=arr[0]:
-                        return False
+                    
                     heapq.heappop(arr)
         return True
+
+        
+
+
+
+
+
+
 
         
