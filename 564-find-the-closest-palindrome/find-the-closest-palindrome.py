@@ -39,5 +39,3 @@ class Solution:
             leftHalf //= 10
         return palindrome
 
-
-#https://leetcode.com/problems/find-the-closest-palindrome/submissions/1365095966/
