@@ -15,7 +15,7 @@ class Solution:
                 if not dfs(nodes):
                     return False
             self.visited.remove(node)
-            #adjList[node] = []
+            adjList[node] = []
             return True
         ans = True
         for i in range(numCourses):
