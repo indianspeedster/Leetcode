@@ -4,9 +4,9 @@ class Solution:
         for i, j in prerequisites:
             adjList[i].append(j)
         self.visited = set()
+        @cache
         def dfs(node):
             if node in self.visited :
-                
                 return False
             if adjList[node] == []:
                 return True
@@ -15,7 +15,7 @@ class Solution:
                 if not dfs(nodes):
                     return False
             self.visited.remove(node)
-            adjList[node] = []
+            #adjList[node] = []
             return True
         ans = True
         for i in range(numCourses):
