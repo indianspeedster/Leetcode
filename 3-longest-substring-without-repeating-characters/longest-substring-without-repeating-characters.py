@@ -9,8 +9,7 @@ class Solution:
                 ans = max(ans, ind-left+1)
             else:
                 left = hashMap[char] + 1
-                hashMap[char] = ind
-                #ans = max(ans, ind-left+1)   
+                hashMap[char] = ind   
         return ans
 
         
