@@ -5,13 +5,15 @@ class Solution:
         def dfs(i):
             if i == len(s):
                 return 1
+            if i > len(s):
+                return 0
             if s[i] == "0":
                 return 0
             left =  dfs(i+1)
-            if i+2 not in range(len(s)+1) or s[i:i+2] not in hashMap:
+            if s[i:i+2] not in hashMap:
                 right = 0
             else:
-                right = dfs(i+2 )
+                right = dfs(i+2)
             return left + right
         return dfs(0)
        
