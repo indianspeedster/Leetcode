@@ -12,11 +12,8 @@ class Solution:
             rightmax = max(rightmax, i)
         right = right[::-1]
         ans = 0
-    
- 
         for i, heigh in enumerate(height):
             ans += max(0, min(left[i],right[i]) - heigh)
-       
         return ans
         
         
