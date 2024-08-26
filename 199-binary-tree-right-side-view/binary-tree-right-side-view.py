@@ -9,7 +9,7 @@ class Solution:
         if not root:
             return []
         st = [root]
-        ans = [root.val]
+        ans = []
         while st:
             curr = []
             for node in st:
@@ -17,8 +17,7 @@ class Solution:
                     curr.append(node.left)
                 if node.right:
                     curr.append(node.right)
-            if curr:
-                ans.append(curr[-1].val)
+            ans.append(st[-1].val)
             st = curr
         return ans
         
