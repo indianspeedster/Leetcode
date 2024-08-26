@@ -10,7 +10,7 @@ class Solution(object):
                 cool = dfs(i+1, sell)
                 return max(buy,cool)
             else:
-                selli =  dfs(i+2, True) + prices[i] 
+                selli =  dfs(i+2, not sell) + prices[i] 
                 cooldown = dfs(i+1,sell)
                 return max(selli,cooldown)
         return dfs(0,True)
