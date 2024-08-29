@@ -1,30 +1,33 @@
 class Solution:
-    def removeStones(self, stones):
+    def removeStones(self, stones: List[List[int]]) -> int:
         n = len(stones)
-        uf = self.UnionFind(n)
 
+        # Adjacency list to store graph connections
+        adjacency_list = [[] for _ in range(n)]
+
+        # Build the graph: Connect stones that share the same row or column
         for i in range(n):
             for j in range(i + 1, n):
                 if stones[i][0] == stones[j][0] or stones[i][1] == stones[j][1]:
-                    uf._union(i, j)
-        return n - uf.count
-        
-    class UnionFind:
-        def __init__(self, n):
-            self.parent = [-1] * n  
-            self.count = (
-                n  
-            )
-        def _find(self, node):
-            if self.parent[node] == -1:
-                return node
-            self.parent[node] = self._find(self.parent[node])
-            return self.parent[node]
+                    adjacency_list[i].append(j)
+                    adjacency_list[j].append(i)
 
-        def _union(self, n1, n2):
-            root1 = self._find(n1)
-            root2 = self._find(n2)
-            if root1 == root2:
-                return  
-            self.count -= 1
-            self.parent[root1] = root2
+        num_of_connected_components = 0
+        visited = [False] * n
+
+        # DFS to visit all stones in a connected component
+        def _depth_first_search(stone):
+            visited[stone] = True
+            for neighbor in adjacency_list[stone]:
+                if not visited[neighbor]:
+                    _depth_first_search(neighbor)
+
+        # Traverse all stones using DFS to count connected components
+        for i in range(n):
+            if not visited[i]:
+                _depth_first_search(i)
+                num_of_connected_components += 1
+
+        # Maximum stones that can be removed is total stones minus number of connected components
+        return n - num_of_connected_components
+                
