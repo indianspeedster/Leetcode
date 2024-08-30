@@ -8,14 +8,11 @@ class Solution:
         def dfs(node):
             if node in self.visited :
                 return False
-            if adjList[node] == []:
-                return True
             self.visited.add(node)
             for nodes in adjList[node]:
                 if not dfs(nodes):
                     return False
             self.visited.remove(node)
-            
             return True
         ans = True
         for i in range(numCourses):
