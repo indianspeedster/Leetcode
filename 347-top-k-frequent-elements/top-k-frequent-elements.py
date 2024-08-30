@@ -1,11 +1,10 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        countDic = Counter(nums)
+        count = Counter(nums)
+        arr = [(-1*val,key) for key, val in count.items()]
+        heapq.heapify(arr)
         ans = []
-
-        for key, value in sorted(countDic.items(), key = lambda x : x[1], reverse=True):
+        for i in range(k):
+            val, key = heapq.heappop(arr)
             ans.append(key)
-            k -= 1
-            if k == 0:
-                return ans
-        
+        return ans
