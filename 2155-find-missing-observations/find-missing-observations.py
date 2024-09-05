@@ -5,8 +5,10 @@ class Solution:
         toAchieve = total - sum(rolls)
         ans = []
         k = toAchieve / n
-        print(k)
+        
+    
         if k > 6 or k < 1:
+          
             return []
         while n > 0:
             ans.append(ceil(toAchieve/n))
