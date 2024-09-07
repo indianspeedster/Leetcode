@@ -21,6 +21,8 @@ class Solution:
             return track(node.left, start.next) or track(node.right, start.next)
         self.res = False
         def dfs(node):
+            if self.res:
+                return
             if not node:
                 return
             if node.val == head.val:
