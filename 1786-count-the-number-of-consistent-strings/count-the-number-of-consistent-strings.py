@@ -2,6 +2,7 @@ class Solution:
     def countConsistentStrings(self, allowed: str, words: List[str]) -> int:
         words = [sorted("".join(list(set(list(string))))) for string in words]
         ans = 0
+        allowed = set(list(allowed))
         for word in words:
             flag = True
             for letter in word:
