@@ -9,6 +9,6 @@ class Solution:
         for key, val in s2.items():
             if key not in s1 and val == 1:
                 ans.append(key)
-        return list(set(ans))
+        return ans
 
         
