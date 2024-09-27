@@ -6,10 +6,10 @@ class MyCalendarTwo:
 
     def book(self, start: int, end: int) -> bool:
         for s,e in self.overlapping:
-            if  (start < e and s < end):
+            if  not (start >= e or s >= end):
                 return False
         for s,e in self.calendar:
-            if  (start < e and s < end):
+            if  not (start >= e or s >= end):
                 st = max(s, start)
                 en = min(e, end)
                 self.overlapping.append((st, en))
