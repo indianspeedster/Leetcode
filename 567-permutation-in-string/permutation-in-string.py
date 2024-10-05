@@ -12,10 +12,8 @@ class Solution:
                 return True
             s2dict[s2[i+s1len]] += 1
             s2dict[s] -= 1
-            
             if s2dict[s] == 0:
                 del s2dict[s]
-        
         return s2dict == s1Count
             
         
