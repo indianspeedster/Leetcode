@@ -1,10 +1,14 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        count = Counter(nums)
-        arr = [(-1*val,key) for key, val in count.items()]
-        heapq.heapify(arr)
+        countDict = Counter(nums)
+        elements = [(-1*j,i) for i,j in countDict.items()]
         ans = []
+        heapq.heapify(elements)
         for i in range(k):
-            val, key = heapq.heappop(arr)
+            count,key = heapq.heappop(elements)
             ans.append(key)
         return ans
+        
+        
+        
+        
