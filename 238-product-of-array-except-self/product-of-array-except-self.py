@@ -1,14 +1,17 @@
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
-        ans = [1] * len(nums)
+        ans = []
+        curr = 1
+        for num in nums:
+            ans.append(curr)
+            curr *= num
+        curr = 1
         n = len(nums)
-        product = 1
-        for i in range(n):
-            ans[i] = product
-            product *= nums[i]
-        product = 1
         for i in range(n-1, -1, -1):
-            ans[i] *= product
-            product *= nums[i]
+            ans[i] *= curr
+            curr *= nums[i]
         return ans
+
+
+        
         
