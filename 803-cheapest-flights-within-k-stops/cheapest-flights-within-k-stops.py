@@ -7,8 +7,7 @@ class Solution:
             temp = distance.copy()
 
             for start, end, charge in flights:
-                if distance[start] == float("inf"):
-                    continue
+
                 
                 if distance[start] + charge < temp[end]:
                     temp[end] = distance[start] + charge
