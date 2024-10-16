@@ -1,29 +1,34 @@
+
 class Solution:
     def minDays(self, bloomDay: List[int], m: int, k: int) -> int:
-        n=len(bloomDay)
-        if m*k>n: return -1
+        if m * k > len(bloomDay):
+            return -1
 
-        def f(d):
-            len, bouquet=0, 0
-            i=0
-            while i<n:
-                while i<n and bloomDay[i]<=d:
-                    len+=1
-                    if len==k:
-                        bouquet+=1
-                        len=0
-                    i+=1
-                if i<n and bloomDay[i]>d: len=0
-                if bouquet>m: return True
-                i+=1
-            return bouquet>=m
+        def can_make_bouquets(day):
+            bouquets = 0
+            flowers = 0
+            for bloom in bloomDay:
+                if bloom <= day:
+                    flowers += 1
+                    if flowers == k:
+                        bouquets += 1
+                        flowers = 0
+                        if bouquets == m:
+                            return True
+                else:
+                    flowers = 0
+            return False
 
-        l, r = min(bloomDay), max(bloomDay)
-        while l < r:
-            mid = l + (r - l) // 2
-            if f(mid):
-                r = mid
+        left, right = min(bloomDay), max(bloomDay)
+        ans = -1 
+        while left <= right:
+            mid = (left + right) // 2
+            if can_make_bouquets(mid):
+                ans = mid
+                right = mid -1
             else:
-                l = mid + 1
-        return l
+                left = mid + 1
+        
+        return ans
+
         
