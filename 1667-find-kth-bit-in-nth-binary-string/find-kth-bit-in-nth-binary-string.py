@@ -8,7 +8,7 @@ class Solution:
                 else:
                     ans += "1"
             return ans
-        @cache
+       
         def dfs(n):
             if n == 0:
                 return "0"
