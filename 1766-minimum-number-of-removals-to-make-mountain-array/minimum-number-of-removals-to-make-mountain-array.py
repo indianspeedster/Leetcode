@@ -1,26 +1,25 @@
 class Solution:
     def minimumMountainRemovals(self, nums: List[int]) -> int:
-        N =len(nums)
+        n = len(nums)
 
-        lis = [1]*N
-
-        for i in range(N):
-            for j in range(i):
-                if nums[i] > nums[j]:
-                    lis[i] = max(lis[i], 1 + lis[j])
-
-        lds = [1]*N
-
-        for i in range(N-1, -1, -1):
-            for j in range(i+1, N):
-                if nums[i] > nums[j]:
-                    lds[i] = max(lds[i], 1+lds[j])
+        def LIS(nums_arr):
+            position_arr = [0] * n
+            stack = []
+            for i in range(n):
+                if stack and stack[-1] >= nums_arr[i]:
+                    pos = bisect_left(stack, nums_arr[i])
+                    stack[pos] = nums_arr[i]
+                    position_arr[i] = pos+1
+                else:
+                    stack.append(nums_arr[i])
+                    position_arr[i] = len(stack)
+            return position_arr
         
+        left, right = LIS(nums), LIS(nums[::-1])[::-1]
+        ans = float('inf')
+        for i in range(n):
+            if left[i] > 1 and right[i] > 1:
+                ans = min(ans, n - (left[i] + right[i]-1))
 
-        res = N
-
-        for i in range(1,N-1):
-            if min(lis[i], lds[i]) > 1:
-                res = min(res, N- (lis[i]+lds[i]-1))
-        return res
+        return ans
         
