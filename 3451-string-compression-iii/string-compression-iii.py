@@ -3,9 +3,12 @@ class Solution:
         ans = ""
 
         cur = 0
-        prev = "-1"
 
         for i in word:
+            if cur == 0:
+                cur += 1
+                prev = i
+                continue
             if i == prev and cur == 9:
                 ans += str(cur) + prev
                 cur = 1
@@ -16,8 +19,7 @@ class Solution:
                 prev = i
             else:
                 cur += 1
-        
         ans += str(cur) + prev
-        return ans[3:]
+        return ans
             
         
