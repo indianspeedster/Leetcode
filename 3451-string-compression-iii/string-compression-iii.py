@@ -4,11 +4,7 @@ class Solution:
         cur = 0
         prev = word[0]
         for i in word:
-            if i == prev and cur == 9:
-                ans += str(cur) + prev
-                cur = 1
-                prev = i
-            elif i != prev:
+            if (i == prev and cur == 9) or (i != prev):
                 ans += str(cur) + prev
                 cur = 1
                 prev = i
