@@ -3,8 +3,6 @@ class Solution:
 
         result = 0
         n -= 1
-
-       
         binaryX = [0] * 64 
         binaryN = [0] * 64  
 
@@ -26,9 +24,8 @@ class Solution:
             posX += 1
             posN += 1
 
- 
         for i in range(64):
-            if binaryX[i] == 1:
-                result += pow(2, i)
+            
+            result += pow(2, i)*binaryX[i]
 
         return result
