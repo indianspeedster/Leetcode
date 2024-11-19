@@ -1,33 +1,27 @@
 class Solution {
+private:
+    long long sum = 0;
+    int dupli = 0, cnt[100001] = {};
+    void pushElement(int &num) {
+        sum += num;
+        if (++cnt[num] == 2) ++dupli;
+    }
+    void popElement(int &num) {
+        sum -= num;
+        if (--cnt[num] == 1) --dupli;
+    }
+        
 public:
     long long maximumSubarraySum(vector<int>& nums, int k) {
-        int left = 0;
-        long long ans = 0;
-        long long curr = 0;
+        for (int i = 0; i < k; ++i) pushElement(nums[i]);
+        long long res = dupli ? 0 : sum;
 
-        unordered_set<int> hashset;
-
-        for (int right =0; right < nums.size(); right++){
-
-            curr += nums[right];
-
-            while (hashset.count(nums[right])){
-                hashset.erase(nums[left]);
-                curr -= nums[left];
-                left += 1;
-            }
-
-            hashset.insert(nums[right]);
-
-            if (right-left+1==k){
-                ans = max(ans, curr);
-                curr -= nums[left];
-                hashset.erase(nums[left]);
-                left += 1;
-            }
-
+        for (int i = 0; i < nums.size() - k; ++i) {
+            popElement(nums[i]);
+            pushElement(nums[i + k]);
+            if (!dupli) res = max(res, sum);
         }
-        return ans;
-        
+
+        return res;
     }
 };
