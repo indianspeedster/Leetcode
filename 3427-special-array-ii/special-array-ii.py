@@ -1,36 +1,18 @@
 class Solution:
     def isArraySpecial(self, nums: List[int], queries: List[List[int]]) -> List[bool]:
+
         N = len(nums)
-        Q = len(queries)
 
-        events = defaultdict(list)
-
-        for index, (s,e) in enumerate(queries):
-            events[s].append((index, 1))
-            events[e].append((index, -1))
-
-        current = set()
-        ans = [False]*Q
-
-        for qi, t in events[0]:
-            if t == 1:
-                current.add(qi)
-            else:
-                if qi in current:
-                    current.remove(qi)
-                    ans[qi] = True
-        
+        track = [1]*N
 
         for i in range(1, N):
-            if nums[i] % 2 == nums[i-1] %2:
-                current = set()
+            if nums[i]%2 != nums[i-1]%2:
+                track[i] = 1 + track[i-1]
+        ans = []
 
-            for qi, t in events[i]:
-                if t == 1:
-                    current.add(qi)
-                else:
-                    if qi in current:
-                        current.remove(qi)
-                        ans[qi] = True
+        for start, end in queries:
+            if end - start +1 <= track[end]:
+                ans.append(True)
+            else:
+                ans.append(False)
         return ans
-        
