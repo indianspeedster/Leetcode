@@ -1,3 +1,24 @@
+"""class Solution:
+    def numberOfPaths(self, grid: List[List[int]], k: int) -> int:
+        m,n = len(grid), len(grid[0])
+        self.total = 0
+
+        mod=10**(+7)
+        dp = {}
+        def dfs(i,j, val):
+            if (i,j,val) in dp:
+                return dp[(i,j,val)]
+            if i not in range(m) or j not in range(n):
+                return 0
+            cur = val + grid[i][j]
+            if i==m-1 and j==n-1:
+                if cur%k==0:
+                    return 1
+                return 0
+            val2 = (dfs(i+1,j, cur) + dfs(i,j+1, cur) ) % mod
+            dp[(i,j,val)] = val2
+            return val2
+        return dfs(0,0,0)%mod"""
 class Solution:
     def numberOfPaths(self, grid: List[List[int]], k: int) -> int:
         m,n = len(grid), len(grid[0])
@@ -30,4 +51,7 @@ class Solution:
 
         return dfs(0,0,0) % mod
         
+        
+        
+            
         
