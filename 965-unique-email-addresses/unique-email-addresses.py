@@ -6,14 +6,8 @@ class Solution:
             first, second = email.split("@")
             actual_email = ""
             
-            for letter in first:
-                if letter == ".":
-                    continue
-                elif letter == "+":
-                    break
-                else:
-                    actual_email += letter
-            actual_email += "@" + second
+            local = first.split("+")[0].replace(".","")
+            actual_email = local + "@" + second
         
             final_list.add(actual_email)
         return len(final_list)
