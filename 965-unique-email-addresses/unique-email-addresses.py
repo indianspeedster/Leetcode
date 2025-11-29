@@ -14,9 +14,8 @@ class Solution:
                 else:
                     actual_email += letter
             actual_email += "@" + second
-            #print(actual_email)
-            if actual_email not in final_list:
-                final_list.add(actual_email)
+        
+            final_list.add(actual_email)
         return len(final_list)
             
                     
